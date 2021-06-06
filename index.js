@@ -28,6 +28,7 @@ function CreateFile(filePath,data){
 function UpdateFile(filePath,data){
     return ReadFile(filePath)
     .then(()=>{
+        fs.promises.unlink(filePath)
         fs.promises.appendFile(filePath, data)
         return 'Data Updated!'
     })
